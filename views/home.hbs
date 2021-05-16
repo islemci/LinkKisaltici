@@ -1,0 +1,52 @@
+<div class="container">
+    <h1>URL Shortener</h1>
+
+    <form>
+        <input type="text" name="URL" id="URL" placeholder="enter thee URL" />
+        <input type="submit" value="Generate shortened link">
+    </form>
+
+    <div>
+        <a href="" id="shortenLink"></a>
+        <p id="error"></p>
+    </div>
+
+    <br>
+    <div>
+        <p>So this is a simple URL shortener app. Go to /api/all to see all the shortened link and their actual version
+            in JSON. You can hit /api/create with a POST request to create your own shortened link. In the body you will
+            need to pass the URl to be shortened</p>
+    </div>
+</div>
+
+
+
+<script>
+    document.querySelector("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        URL = document.getElementById("URL").value
+        shortenLinkP = document.getElementById("shortenLink")
+        errorP = document.getElementById("error")
+        data = {
+            URL
+        }
+        console.log(data);
+        const response = await fetch("/api/create", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        const res_json = await response.json()
+        if (!res_json.msg) {
+            shortenLinkP.innerText = res_json.shortened_url
+            shortenLinkP.href = res_json.shortened_url
+            errorP.innerText = ""
+        }
+        else {
+            errorP.innerText = res_json.msg
+            shortenLinkP.innerText = ""
+        }
+    })
+</script>
