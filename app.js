@@ -6,7 +6,7 @@ const hbs = require("express-handlebars");
 
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = "8080";
 
 const db = require("./db_connect");
 
@@ -30,5 +30,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Sunucu portu dinliyor: ${PORT}`);
 });

@@ -6,7 +6,7 @@ const router = express.Router();
 
 const db = require("../db_connect");
 
-const baseURL = process.env.baseURL || `http://localhost:${process.env.PORT}`;
+const baseURL = process.env.baseURL || `https://linkshortener.cuurle.repl.co/`;
 
 router.get("/all", (req, res) => {
   db.find({}, (err, docs) => {
@@ -63,11 +63,11 @@ router.post("/create", (req, res) => {
       );
     } else
       res.status(400).json({
-        msg: "Invalid URL passed"
+        msg: "Hatalı URL"
       });
   } else {
     res.status(400).json({
-      msg: "NO URL passed"
+      msg: "Geçersiz URL"
     });
   }
 });

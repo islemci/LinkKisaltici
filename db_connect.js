@@ -4,7 +4,7 @@ const db = new nedb({
 });
 db.loadDatabase(err => {
     if (!err) {
-        console.log("db found/created successfully");
+        console.log("Database başarıyla ayarlandı.");
     } else {
         console.log(err);
     }

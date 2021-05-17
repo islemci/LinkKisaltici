@@ -1,14 +1,14 @@
 {
-  "name": "shorten_link_project",
+  "name": "LinkKisaltici",
   "version": "1.0.0",
-  "description": "",
+  "description": "Linkini Kısalt.",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "cuurle.xyz",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
